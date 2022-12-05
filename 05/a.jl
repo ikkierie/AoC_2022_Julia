@@ -4,9 +4,9 @@ begin
     
     local data, instrs = split.(split(input, r"(\r?\n){2}"), r"\r?\n")
 
-    local stacks = filter!.(!isspace, collect.(eachrow(
+    local stacks = filter.(!isspace, eachrow(
         hcat(collect.(data)...)[2:4:end, 1:end-1]
-    ))) .|> reverse!
+    )) .|> reverse!
 
     local instr_fmt = r"^move (\d+) from (\d+) to (\d+)$"
     for instr ∈ instrs
