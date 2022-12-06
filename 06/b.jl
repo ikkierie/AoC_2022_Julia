@@ -4,7 +4,7 @@ begin
     
     local n = 14
     println(findfirst(
-        i -> length(∩(input[i-n+1:i])) == n, 
+        i -> length(∩(@view input[i-n+1:i])) == n, 
         n:length(input)
     ) + n - 1)
 end
