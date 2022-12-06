@@ -1,0 +1,1 @@
+println.(("Part One: ", "Part Two: "), findfirst(i -> length(∩(input[i-n+1:i])) == n, n:length(input)) + n - 1 for n ∈ (4, 14), input ∈ [read("input.txt")])
