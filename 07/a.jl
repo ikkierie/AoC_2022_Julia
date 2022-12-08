@@ -37,13 +37,5 @@ begin
         dir.size + sum(get_size.(dir.subdirs), init = 0)
     end
 
-    local p1        = 100000
-    local p2        = 30000000
-    local total_mem = 70000000
-    local free      = total_mem - get_size("/")
-
-    println.((
-        sum(filter(<(p1), get_size.(keys(dirs)))),
-        minimum(filter(>(p2 - free), get_size.(keys(dirs))))
-    ))
+    println(sum(filter(<(100000), get_size.(keys(dirs)))))
 end
