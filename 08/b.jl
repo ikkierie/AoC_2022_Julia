@@ -16,5 +16,4 @@ begin
     end
 
     println(maximum(scores))
-    println("Done.")
 end

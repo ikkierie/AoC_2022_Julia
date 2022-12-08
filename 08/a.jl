@@ -16,5 +16,4 @@ begin
     end
 
     println(count(visible))
-    println("Done.")
 end
