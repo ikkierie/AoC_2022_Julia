@@ -16,12 +16,12 @@ begin
 
     local safe = Set((x, y) for x ∈ -1:1, y ∈ -1:1)
 
-    for (dir, mag) ∈ enumerate(input)
+    for (dir, mag) ∈ input
         for _ ∈ 1:parse(Int, mag)
             head = head .+ dirs[dir]
-            if (local diff = tail .- head) ∉ safe
+            if (tail .- head) ∉ safe
                 tail = !any(tail .== head) ?
-                    tail .+ copysign.((1, 1), (head .- tail))
+                    tail .+ copysign.((1, 1), (head .- tail)) :
                     tail .+ (head .- tail) .- sign.(head .- tail)
             end
             push!(grid, tail)
