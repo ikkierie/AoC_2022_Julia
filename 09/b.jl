@@ -2,7 +2,8 @@ begin
     local path  = raw"input.txt"
     local input = match.(r"(\S) (\d+)", readlines(path))
 
-    local knots = [ (0, 0) for x ∈ 1:10 ]
+    local n     = 10
+    local knots = [ (0, 0) for x ∈ 1:n ]
 
     local grid = Set(knots)
 
@@ -18,7 +19,7 @@ begin
     for (dir, mag) ∈ input
         for _ ∈ 1:parse(Int, mag)
             knots[1] = knots[1] .+ dirs[dir]
-            for k ∈ 2:10
+            for k ∈ 2:n
                 local head = knots[k-1]
                 local tail = knots[k]
                 if (tail .- head) ∉ safe
