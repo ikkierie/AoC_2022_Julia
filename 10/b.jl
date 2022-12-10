@@ -24,8 +24,8 @@ begin
         end
     end
 
-    println.([ 
+    println.(
         String([ (40i + j) ∈ crt ? '█' : ' ' for j ∈ 0:39 ])
         for i ∈ 0:5
-    ])
+    )
 end
