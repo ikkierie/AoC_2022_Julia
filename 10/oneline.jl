@@ -14,9 +14,7 @@ println("Part one: $((
         match.(r"^(\S+)\s*(\S*)", eachline("input.txt"));
         init = (Set{Int}(), 0, 0, 1)
     )
-)[3])\nPart two:\n$(
-    join(
-        [ String([ (40i + j) ∈ output[1] ? '█' : ' ' for j ∈ 0:39 ]) for i ∈ 0:5 ],
-        '\n'
-    )
-)")
+)[3])\nPart two:\n$(join(
+    [ String([ (40i + j) ∈ output[1] ? '█' : ' ' for j ∈ 0:39 ]) for i ∈ 0:5 ],
+    '\n'
+))")
