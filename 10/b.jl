@@ -6,8 +6,7 @@ begin
     local clock = 0
 
     local function draw()
-        local crt_idx = clock % 2400
-        ((crt_idx % 40) ∈ (x-1:x+1)) && push!(crt, crt_idx)
+        ((clock % 40) ∈ (x-1:x+1)) && push!(crt, clock % 2400)
     end
 
     local function tick()
