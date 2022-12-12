@@ -26,7 +26,7 @@ begin
         local len         = seen[cur_node]
         visited[cur_node] = len
 
-        (cur_node == goal) && @goto found
+        (cur_node == goal) && break
 
         for dir ∈ dirs
             local new_node = cur_node .+ dir
@@ -44,7 +44,6 @@ begin
             end
         end
     end
-    @label found
 
     print(visited[goal])
 end
