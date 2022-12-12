@@ -12,12 +12,7 @@ begin
         for (x, node) ∈ enumerate(replace(line, 'S' => 'a'))
     )
 
-    local dirs = [
-        ( 1,  0),
-        (-1,  0),
-        ( 0,  1),
-        ( 0, -1),
-    ]
+    local dirs = [(1, 0), (-1, 0), (0, 1), (0, -1)]
 
     local visited = Dict{Tuple{Int, Int}, Int}()
     local seen    = Dict(start => 0)
