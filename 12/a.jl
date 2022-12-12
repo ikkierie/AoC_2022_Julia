@@ -38,7 +38,7 @@ begin
                     push!(queue, new_node)
                 end
                 seen[new_node] = min(
-                    get(() -> Inf, seen, new_node),
+                    get(seen, new_node, Inf),
                     len + 1
                 )
             end
