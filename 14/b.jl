@@ -36,8 +36,8 @@ function main()
 
     local shows = Dict(air => ' ', rock => '#', sand => 'o')
 
-    local function do_show(n::Int, pause::Bool = false)
-        println("\x1b[H$n")
+    local function do_show(pause::Bool = false)
+        print("\x1b[H")
         display([ 
             shows[get(cave, (x, y), air)] 
             for y ∈ highest:lowest, 
@@ -52,20 +52,16 @@ function main()
 
     local success = 0
     local cur_sand = nothing
-    for round ∈ 1:typemax(Int)
-        #do_show(round)
-        if spawn ∈ keys(cave)
-            println(success)
-            break
-        elseif isnothing(cur_sand)
+    while spawn ∉ keys(cave)
+        #do_show()
+        if isnothing(cur_sand)
             cave[spawn] = sand
             cur_sand = spawn
         end
-
         local moved = false
         for dir ∈ check_dirs
             local new_pos = cur_sand .+ dir
-            if new_pos[2] < lowest && new_pos ∉ keys(cave)
+            if last(new_pos) < lowest && new_pos ∉ keys(cave)
                 pop!(cave, cur_sand)
                 cave[new_pos] = sand
                 cur_sand = new_pos
@@ -79,7 +75,7 @@ function main()
         end
     end
 
-    println("Done.")
+    println(success)
 end
 
 main()
