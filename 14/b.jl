@@ -24,36 +24,14 @@ function main()
         end
     end
 
-    local x_min = minimum(first.(keys(cave)))
-    local x_max = maximum(first.(keys(cave)))
-
-    local width = x_max - x_min + 1
-
-    local highest = min(0, minimum(last.(keys(cave))))
     local lowest = maximum(last.(keys(cave))) + 2
 
-    local height = lowest - highest + 1
-
-    local shows = Dict(air => ' ', rock => '#', sand => 'o')
-
-    local function do_show(pause::Bool = false)
-        print("\x1b[H")
-        display([ 
-            shows[get(cave, (x, y), air)] 
-            for y ∈ highest:lowest, 
-                x ∈ x_min:x_max 
-        ])
-        pause && readline()
-    end
-
     local spawn = (500, 0)
-
     local check_dirs = [ (0, 1), (-1, 1), (1, 1) ]
 
     local success = 0
     local cur_sand = nothing
     while spawn ∉ keys(cave)
-        #do_show()
         if isnothing(cur_sand)
             cave[spawn] = sand
             cur_sand = spawn
